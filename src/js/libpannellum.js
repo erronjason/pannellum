@@ -210,6 +210,12 @@ function Renderer(container, image, imageType) {
     };
 
     this.render = function(pitch, yaw, hfov) {
+
+        // Print out pitch and yaw of camera if set
+        if (window.DEBUG_PANNELLUM) {
+            console.log('Pitch: ' + (pitch * (180/Math.PI)).toFixed(0), 'Yaw: ' + (yaw * (180/Math.PI)).toFixed(0));
+        }
+
         // If no WebGL
         if (!gl && this.imageType == 'multires') {
             var focal = 1 / Math.tan(hfov / 2);
